@@ -1,5 +1,7 @@
 {
-  "name": "family-recipes-v1",
-  "integrations": {},
+  "name": "family-recipes",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
