@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Recipes
+      <div>Recipes {{(recipes | async)?.length}}</div>
+      <!--   <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Recipes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" [ngStyle]="{overflow: 'auto'}">
+  <!--   <ion-fab horizontal="end">
+    <ion-fab-button color="warning">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
-  <app-explore-container name="Recipes page"></app-explore-container>
+  <ng-container *ngFor="let letter of letters">
+    <ion-item-divider color="warning">
+      <ion-label>{{letter}}</ion-label>
+    </ion-item-divider>
+
+    <ng-container *ngFor="let item of recipes | async">
+      <ion-item-group *ngIf="(item.title[0]).startsWith(letter); else skip">
+        <app-recipe-item [recipe]="item" [letter]="letter"></app-recipe-item>
+      </ion-item-group>
+    </ng-container>
+    <!-- Template -->
+    <ng-template #skip></ng-template>
+  </ng-container>
+  <!--  <ion-toast trigger="emptyRecipes" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast> -->
 </ion-content>
