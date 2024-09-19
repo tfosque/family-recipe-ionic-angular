@@ -14,7 +14,9 @@ export class RecipeItemComponent implements OnInit {
     private readonly recipeSvc: RecipeService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log( this.recipe.imgSet.default )
+  }
 
   onClick() {
     // send selected recipe to recipeService

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 
 @Component( {
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-details.page.scss'],
 } )
 export class RecipeDetailsPage implements OnInit {
+  selectedRecipe = new BehaviorSubject<any>( {} );
 
 
-  constructor() { }
+  constructor(
+    private readonly recipeSvc: RecipeService
+  ) { }
 
   ngOnInit() {
+    this.recipeSvc.selectedRecipe$.subscribe( ( item: any ) => {
+      console.log( { item } );
+      this.selectedRecipe.next( item );
+    } )
   }
 
 }

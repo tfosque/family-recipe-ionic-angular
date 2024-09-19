@@ -5,17 +5,14 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>recipe-details</ion-title>
+    <ion-title>{{ (selectedRecipe | async)?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <!--   <ion-nav-link router-direction="forward" [component]="component">
-      <ion-button>Go to Page Two</ion-button>
-    </ion-nav-link> -->
     <ion-toolbar>
-      <ion-title size="large">recipe-details</ion-title>
+      <ion-title size="large">{{ (selectedRecipe | async)?.title }}</ion-title>
     </ion-toolbar>
   </ion-header>
 </ion-content>

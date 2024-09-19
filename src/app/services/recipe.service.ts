@@ -40,7 +40,7 @@ export class RecipeService {
   }
 
   setSelectedRecipe( item: any ) {
-    this.selectedRecipe.next( item )
+    this.selectedRecipe.next( item );
   }
 
   alphabetizeList( list: [] ) {
