@@ -8,16 +8,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" [ngStyle]="{overflow: 'auto'}">
-  <!--   <ion-fab horizontal="end">
-    <ion-fab-button color="warning">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
+<ion-content [fullscreen]="true">
   <ng-container *ngFor="let letter of letters">
-    <ion-item-divider color="warning">
-      <ion-label>{{letter}}</ion-label>
+    <ion-item-divider color="light">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{letter}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item-divider>
 
     <ng-container *ngFor="let item of recipes | async">
@@ -28,5 +28,11 @@
     <!-- Template -->
     <ng-template #skip></ng-template>
   </ng-container>
+  <!--   <ion-fab horizontal="end">
+    <ion-fab-button color="warning">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
   <!--  <ion-toast trigger="emptyRecipes" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast> -->
 </ion-content>

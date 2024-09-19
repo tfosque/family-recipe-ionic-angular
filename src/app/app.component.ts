@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RecipeService } from './services/recipe.service';
-
 @Component( {
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,13 +6,7 @@ import { RecipeService } from './services/recipe.service';
 } )
 export class AppComponent {
 
-  constructor(
-    private readonly recipeSvc: RecipeService
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.recipeSvc.getLocalRecipes();
-  }
-
-
+  ngOnInit(): void { }
 }

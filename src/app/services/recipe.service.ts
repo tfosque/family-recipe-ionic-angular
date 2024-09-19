@@ -10,8 +10,8 @@ import { ReceipesData } from './recipesData';
   providedIn: 'root'
 } )
 export class RecipeService {
-  api: string = environment.apiBase;
-  // api: string = environment.apiBaseRecipes;
+  // api: string = environment.apiBase;
+  api: string = environment.apiBaseRecipes;
   private recipes = new BehaviorSubject<any>( [] );
   public recipes$ = this.recipes.asObservable();
   //
@@ -30,12 +30,12 @@ export class RecipeService {
       headers: { 'X-Custom-Header': 'Value' },
       // params: { id: '12345' }
     };
-    //
     const response = await CapacitorHttp.get( options );
-    console.log( { response } );
-    //
+
     // const firstRecord = response.data[0];
     const sortedList = this.alphabetizeList( response.data );
+    console.log( { response, sortedList } );
+    //
     this.recipes.next( sortedList );
   }
 
@@ -45,7 +45,7 @@ export class RecipeService {
 
   alphabetizeList( list: [] ) {
     const sorted = _.sortBy( list, 'title' );
-    console.log( { sorted } );
+    // console.log( { sorted } );
     return sorted
   }
 

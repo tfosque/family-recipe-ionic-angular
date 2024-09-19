@@ -15,7 +15,7 @@ export class RecipeItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log( this.recipe.imgSet.default )
+    // console.log( this.recipe.imgSet.default )
   }
 
   onClick() {

@@ -21,10 +21,10 @@ export class Tab1Page {
   }
 
   ngOnInit(): void {
-    // this.letters = 'abcdefghijklmnopqrstuvwxyz'.split( '' ); // returns as array of letters
-
+    this.recipeSvc.getRecipes();
+    //
     this.recipeSvc.recipes$.subscribe( ( r: any ) => {
-      console.log( { r } );
+      // console.log( { r } );
 
       // Account for no recipes
       if ( r?.length ) {
@@ -38,16 +38,14 @@ export class Tab1Page {
         // concat to uniq list with no duplicates
         const uniqueArray = _.uniq( results );
         this.letters = uniqueArray;
-        console.log( { results, uniqueArray } );
-        console.log( 'letters:', this.letters );
+        // console.log( { results, uniqueArray } );
+        // console.log( 'letters:', this.letters );
         return;
       }
       // empty
       // alert user no recipes exist
       this.emptyRecipes = true;
     } )
-    //
-
   }
 
   onIonInfinite( ev: any ) {
