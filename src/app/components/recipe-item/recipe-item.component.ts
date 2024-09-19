@@ -11,6 +11,7 @@ export class RecipeItemComponent implements OnInit {
   @Input() letter: string = '';
   @Input() index: number | null = null;
   showRowLine = "inset";
+  favIcon = false;
 
   constructor(
     private readonly recipeSvc: RecipeService
@@ -23,5 +24,11 @@ export class RecipeItemComponent implements OnInit {
   onClick() {
     // send selected recipe to recipeService
     this.recipeSvc.setSelectedRecipe( this.recipe );
+  }
+
+  onToggleFavIcon( event: any ) {
+    // heart - outline || heart    
+    this.favIcon = !this.favIcon;
+    console.log( 'this.favIcon', this.favIcon, { event } )
   }
 }
