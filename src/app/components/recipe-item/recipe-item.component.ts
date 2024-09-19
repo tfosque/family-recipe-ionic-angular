@@ -9,18 +9,19 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: any = {}
   @Input() letter: string = '';
+  @Input() index: number | null = null;
+  showRowLine = "inset";
 
   constructor(
     private readonly recipeSvc: RecipeService
   ) { }
 
   ngOnInit() {
-    // console.log( this.recipe.imgSet.default )
+    this.showRowLine = this.recipe.showLines ? "inset" : "none"; // inset, full, or none
   }
 
   onClick() {
     // send selected recipe to recipeService
     this.recipeSvc.setSelectedRecipe( this.recipe );
   }
-
 }

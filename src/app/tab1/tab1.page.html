@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <div>Recipes {{(recipes | async)?.length}}</div>
+      <div>Recipes {{(recipes$ | async)?.length}}</div>
       <!--   <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
     </ion-title>
 
@@ -20,9 +20,9 @@
       </ion-grid>
     </ion-item-divider>
 
-    <ng-container *ngFor="let item of recipes | async">
+    <ng-container *ngFor="let item of (recipes$ | async); index as i">
       <ion-item-group *ngIf="(item.title[0]).startsWith(letter); else skip">
-        <app-recipe-item [recipe]="item" [letter]="letter"></app-recipe-item>
+        <app-recipe-item [recipe]="item" [letter]="letter" [index]="i"></app-recipe-item>
       </ion-item-group>
     </ng-container>
     <!-- Template -->
@@ -33,6 +33,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
-
   <!--  <ion-toast trigger="emptyRecipes" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast> -->
 </ion-content>

@@ -32,10 +32,9 @@ export class RecipeService {
     };
     const response = await CapacitorHttp.get( options );
 
-    // const firstRecord = response.data[0];
     const sortedList = this.alphabetizeList( response.data );
     console.log( { response, sortedList } );
-    //
+
     this.recipes.next( sortedList );
   }
 
@@ -48,6 +47,5 @@ export class RecipeService {
     // console.log( { sorted } );
     return sorted
   }
-
 
 }
