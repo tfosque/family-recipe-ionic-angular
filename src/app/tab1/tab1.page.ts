@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { BehaviorSubject } from 'rxjs';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+// import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import * as _ from 'lodash';
 
 @Component( {
@@ -24,9 +24,9 @@ export class Tab1Page {
     this.recipeSvc.getRecipes();
     //
     this.recipeSvc.recipes$.subscribe( ( r: any ) => {
-      // console.log( { r } );
 
-      // Account for no recipes
+      // build letters of alphabet
+      // check if recipes exist
       if ( r?.length ) {
         this.recipes$.next( r );
         this.isLastRowItem();
@@ -39,12 +39,9 @@ export class Tab1Page {
         // concat to uniq list with no duplicates
         const uniqueArray = _.uniq( results );
         this.letters = uniqueArray;
-        // console.log( { results, uniqueArray } );
-        // console.log( 'letters:', this.letters );
         return;
       }
-      // empty
-      // alert user no recipes exist
+      // if empty alert user no recipes exist
       this.emptyRecipes = true;
     } )
   }

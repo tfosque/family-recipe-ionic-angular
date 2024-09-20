@@ -1,7 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
-      <div>Recipes {{(recipes$ | async)?.length}}</div>
+      Recipes
+      <ion-chip color="dark"
+        [ngStyle]="{'width': '68px', 'padding-left': '11%'}">{{(recipes$ | async)?.length}}</ion-chip>
       <!--   <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
     </ion-title>
 
@@ -28,6 +30,11 @@
     <!-- Template -->
     <ng-template #skip></ng-template>
   </ng-container>
+  <!-- NO RECIPES EXIST -->
+  <ng-template #empty>
+    <div>No Results</div>
+  </ng-template>
+
   <!--   <ion-fab horizontal="end">
     <ion-fab-button color="warning">
       <ion-icon name="add"></ion-icon>
