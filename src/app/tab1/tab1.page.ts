@@ -13,6 +13,7 @@ export class Tab1Page {
   letters: any[] = [];
   recipes$ = new BehaviorSubject<any>( [] );
   emptyRecipes = false;
+  isLoaded = false;
 
   constructor(
     private readonly recipeSvc: RecipeService
@@ -30,6 +31,7 @@ export class Tab1Page {
       if ( r?.length ) {
         this.recipes$.next( r );
         this.isLastRowItem();
+        this.isLoaded = true;
 
         // build list
         const results = this.recipes$.value.map( ( rp: any ) => {

@@ -7,11 +7,16 @@
       <!-- <div><small>A | B| C | D | E</small></div> -->
       <!-- <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
     </ion-title>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <section *ngIf="!isLoaded">
+    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 40px"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 93px"></ion-skeleton-text>
+  </section>
   <ng-container *ngFor="let letter of letters">
     <ion-item-divider color="light" sticky="true">
       <ion-grid>
@@ -35,11 +40,12 @@
   <ng-template #empty>
     <div>No Results</div>
   </ng-template>
+  <!--  <ion-toast trigger="emptyRecipes" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast> -->
+</ion-content>
 
-  <!--   <ion-fab horizontal="end">
+<!-- 
+  <ion-fab horizontal="end">
     <ion-fab-button color="warning">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
-  <!--  <ion-toast trigger="emptyRecipes" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast> -->
-</ion-content>
