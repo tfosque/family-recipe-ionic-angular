@@ -4,7 +4,8 @@
       Recipes
       <ion-chip color="dark"
         [ngStyle]="{'width': '68px', 'padding-left': '11%'}">{{(recipes$ | async)?.length}}</ion-chip>
-      <!--   <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
+      <!-- <div><small>A | B| C | D | E</small></div> -->
+      <!-- <ion-searchbar [debounce]="1000" placeholder="Search"></ion-searchbar> -->
     </ion-title>
 
   </ion-toolbar>
@@ -12,7 +13,7 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngFor="let letter of letters">
-    <ion-item-divider color="light">
+    <ion-item-divider color="light" sticky="true">
       <ion-grid>
         <ion-row>
           <ion-col>
